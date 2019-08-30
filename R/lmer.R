@@ -2327,9 +2327,8 @@ summary.merMod <- function(object,
     if (p > 0) {
         coefs <- cbind(coefs, (cf3 <- coefs[,1]/coefs[,2]), deparse.level = 0)
         colnames(coefs)[3] <- paste(if(useSc) "t" else "z", "value")
-        if (isGLMM(object)) # FIXME: if "t" above, cannot have "z" here
-            coefs <- cbind(coefs, "Pr(>|z|)" =
-                           2*pnorm(abs(cf3), lower.tail = FALSE))
+        #if (isGLMM(object)) # FIXME: if "t" above, cannot have "z" here
+        coefs <- cbind(coefs, "Pr(>|z|)" = 2*pnorm(abs(cf3), lower.tail = FALSE))
     }
 
     llAIC <- llikAIC(object)
